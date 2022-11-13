@@ -30,6 +30,8 @@ def cfgToCnf(cfg):
     # Asumsi sekarang
     # 1. No epsilon
     # 2. CFG is already simplified
+    # Masalah
+    # 1. Belum bisa handle non terminal dengan length 1
     temp = 0
     #Step 1 create new start symbol
     cfg['SMain'] = [['S']]
@@ -121,7 +123,7 @@ def getTerminal(array):
             return i
     return 'IDX_UNDEF'
 def isTerminal(string):
-    return string[0].islower()
+    return not notTerminal(string)
 
 def notTerminal(string):
     return string[0].isupper()
