@@ -111,10 +111,6 @@ def cfgToCnf(cfg):
                     cfg[i][j] = [key]+k
     cfg.update(newRule)
     return cfg
-            
-    
-    
-    return cfg
     
 def getTerminal(array):
     #return first terminal
@@ -128,13 +124,14 @@ def isTerminal(string):
 def notTerminal(string):
     return string[0].isupper()
 
-def getKey(dictionary, value):
+def getKey(dictionary, value):#return first keu
     for key, val in dictionary.items():
         if value == val:
             return key 
     return 'IDX_UNDEF'
 
-
+def getAllKey(dictionary, value):
+    return 0
 
 def containTerminal(array):
     Terminal = False
