@@ -67,21 +67,20 @@ def cfgToCnf(cfg):
             
                 k = getTerminal(cfg[i][j])
                 while(k!='IDX_UNDEF'):
-                    print("1. "+str(cfg[i][j]))
                     key = getKey(cfg, [k])
                     if key=='IDX_UNDEF':
                         newRulekey = getKey(newRule, [k])
                         if (newRulekey=="IDX_UNDEF"):
                             newkey = 'New_' + str(temp)
                             temp+=1
-                            newRule[newkey] =  [k]
+                            newRule[newkey] =  [[k]]
                             cfg[i][j] = replaceVal(cfg[i][j],k,newkey)
                         else:
                             cfg[i][j] = replaceVal(cfg[i][j], k, newRulekey)
                     else:
                         
                         cfg[i][j] = replaceVal(cfg[i][j], k, key)
-                    print("2. "+str(cfg[i][j]))
+
                     k = getTerminal(cfg[i][j])
                     # change all terminal into non terminal
     
@@ -131,7 +130,15 @@ def getKey(dictionary, value):#return first keu
     return 'IDX_UNDEF'
 
 def getAllKey(dictionary, value):
-    return 0
+    temp = set()
+    for key,val in dictionary.items():
+        for j in val:
+    
+            if value == j: 
+                print(key)
+                
+                temp = temp | {key}
+    return temp
 
 def containTerminal(array):
     Terminal = False
@@ -150,19 +157,21 @@ def replaceVal(array, valfrom, valinto):
 def isMixed(array):
     terminal = False
     nonTerminal = False
-    for i in array:
+    i=0
+    while ((i<len(array)) &  ~( terminal | nonTerminal)):
         if isTerminal(i):
             terminal = True
         if notTerminal(i):
             nonTerminal = True
+        i+=1
     return (terminal & nonTerminal)
     
     
 
 cfg = cfg_parser('test_parse_cfg.txt')
 
-
 print(cfg)
 cnf = cfgToCnf(cfg)
+print(getAllKey(cfg,['A', 'S']))
 
 print(cnf)
