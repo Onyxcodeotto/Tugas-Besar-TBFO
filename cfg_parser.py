@@ -130,14 +130,16 @@ def getKey(dictionary, value):#return first keu
     return 'IDX_UNDEF'
 
 def getAllKey(dictionary, value):
+    # val format:  ['val']
+    #return empty set if none
     temp = set()
     for key,val in dictionary.items():
         for j in val:
-    
+            
             if value == j: 
-                print(key)
                 
-                temp = temp | {key}
+                
+                temp.update([key])
     return temp
 
 def containTerminal(array):
@@ -166,7 +168,7 @@ def isMixed(array):
         i+=1
     return (terminal & nonTerminal)
     
-    
+    """
 
 cfg = cfg_parser('test_parse_cfg.txt')
 
@@ -174,4 +176,4 @@ print(cfg)
 cnf = cfgToCnf(cfg)
 print(getAllKey(cfg,['A', 'S']))
 
-print(cnf)
+print(cnf)"""
