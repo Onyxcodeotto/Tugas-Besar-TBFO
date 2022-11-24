@@ -16,14 +16,36 @@ def CYK(CNF, input_string):
             else:
                 for k in range(i):
                     rule = list(''.join(e) for e in itertools.product(frame[k][j], frame[i-k-1][k+1]))
-                    print(frame[j][k])
-                    print(frame[k][i])
-                    print(rule)
                     for pair in rule:
                         pair = [*pair]
-                        print(pair)
                         frame[i][j].update(getAllKey(CNF,pair))
     #buat test return frame
     
     return frame
-                
+    
+def CYK_ALT(CNF, input_string):
+    #Pengindexan mengikuti teori, sudah benar
+    # Cek apakah S ada di 0, len - 1
+    base = [*input_string]
+    #empty set
+    frame = [[set() for j in input_string] for i in input_string]
+    
+    for inc in range(0, len(base)):#increment
+        for i in range(0, len(base) - inc):#base
+            j = i+inc
+            if inc==0:
+                frame[i][j] = getAllKey(CNF, [base[j]])
+            else:
+                for k in range(inc):
+                    k+=i
+                    rule = list(''.join(e) for e in itertools.product(frame[i][k], frame[k+1][j]))
+                    for pair in rule:
+                        pair = [*pair]
+                        frame[i][j].update(getAllKey(CNF,pair))
+                        
+    return frame
+                    
+            
+            
+            
+            

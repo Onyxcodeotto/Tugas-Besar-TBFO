@@ -14,13 +14,15 @@ def cfg_parser(path):
             parts[1] = parts[1].strip('\n')
             parts[0] = parts[0].strip()
             parts[1] = parts[1].strip()
+            """
+            ALTERNATE PARSING
+            We need
+            """
             parts[1] = re.sub(' +',' ',parts[1])# replace multiple space to single space
-            print(parts[1])
             if parts[0] not in cfg.keys():
                 parts[1] = parts[1].split('|')
                 cfg[parts[0]] = [re.sub(' +', ' ', i.strip()).split(' ') for i in parts[1]]
             else:
-                print(parts[0])
                 cfg[parts[0]] = cfg[parts[0]] + [parts[1].split()]
     f.close()
     return cfg
@@ -94,12 +96,10 @@ def cfgToCnf(cfg):
             #if len>2
                 k = cfg[i][j][:2]
                 tail_k = cfg[i][j][2:]
-                print(k)
                 key = getKey(cfg, [k])
                 if key=='IDX_UNDEF':
                     newRulekey = getKey(newRule, [k])
                     if (newRulekey=="IDX_UNDEF"):
-                        print("HAI")
                         newkey = 'New_' + str(temp)
                         temp+=1
                         newRule[newkey] =  [k]
