@@ -25,6 +25,9 @@ def cfg_parser(path):
             else:
                 cfg[parts[0]] = cfg[parts[0]] + [parts[1].split()]
     f.close()
+    cfg['SPASEPS'] = [[' '], ['\n'], ['eps']]
+    cfg['SPASW'] = [[' '], ['\n']]
+    cfg['SPASALL'] = [[';'], ['\n'], [' '], ['eps']]
     return cfg
 
 
@@ -35,6 +38,9 @@ def cfgToCnf(cfg):
     # Masalah
     # 1. Belum bisa handle non terminal dengan length 1
     temp = 0
+    
+    
+    
     #Step 1 create new start symbol
     cfg['SMain'] = [['S']]
     
@@ -177,3 +183,5 @@ cnf = cfgToCnf(cfg)
 print(getAllKey(cfg,['A', 'S']))
 
 print(cnf)"""
+
+

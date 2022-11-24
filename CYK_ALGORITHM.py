@@ -47,5 +47,3 @@ def CYK_ALT(CNF, input_string):
                     
             
             
-            
-            
