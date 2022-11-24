@@ -1,0 +1,27 @@
+/*Wadaw*/function do_something(x) {
+// Thisis a sample comment
+/*Wadaw*/function do_something(x) {
+  // Thisis a sample comment
+  if(x==0) {   // Thisis a sample comment
+    return "//";
+  } else if (temp + 4 == 1) {
+    if (true) {
+
+
+      return
+       3;
+    } else {
+      return 2;
+    }
+  } else if (x == 32) {
+    return 4;
+  } else {
+    return "Momen";
+  }
+}
+sample
+Ss
+saw
+saf
+
+
