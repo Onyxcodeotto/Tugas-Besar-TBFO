@@ -6,16 +6,17 @@ from dfa import PreProcess
 
 cfg = cfg_parser("./test_parse_cfg.txt")
 cfg = cfgToCnf(cfg)
-string = read("input.txt")
+string = read("input1.txt")
 string = removecomment(string)
 
 array = lexxer(string)
-print(string)
+#print(string)
 array = PreProcess(array)
-#print(array)
+print(array)
 frame = CYK_ALT(cfg, array)
 benarkah = 'SMain' in frame[0][len(frame)-1]
-beneran = 'S' in frame[0][len(frame)-1]
 
-print(benarkah)
-print(beneran)
+if benarkah:
+    print("ACCEPTED")
+else:
+    print("SYNTAX ERROR!")

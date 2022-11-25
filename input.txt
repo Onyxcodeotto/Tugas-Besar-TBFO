@@ -1,6 +1,4 @@
-//var test = {ba : "Kucing" , Jumlah:1}
-//while(isOne){ 5 = 4 + 3;};
-/*
+
 var a = 2 + 3;
 b = (3+1)-1;
 x = 10;
@@ -8,12 +6,51 @@ x = 10;
 //To be solved
 //console.log(myVar); 
 halo;
+/*
 let king = {wife:"ELSA", daughter: "Son"};
 let NAMRUD = {Death:true};
-
+*/
 switch (expression) {
     case bang_toyyib:
+        switch(kucing){
+            case "Trauma":
+                z = 10;
+        }
         x = 5;
         y=2;
         break;
+    default:
+        z = 100;
 }
+
+
+if(ALGO){
+    kucing = 10;
+}else if(MATDIS){
+    sapi = 12;
+}else if(x<=3){
+
+}else{
+    harimau = 10;
+}
+
+while(x<3){
+    x+2;
+}
+i<3;
+i++;
+for(i=0; i<10; i++){
+    k+=1;
+}
+
+try {
+  nonExistentFunction();
+} catch (error) {
+  console.log(x);
+}
+
+function rafif(test){
+    hai;
+}
+
+delete hebat.croissatn;

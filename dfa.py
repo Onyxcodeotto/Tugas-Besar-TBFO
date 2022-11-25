@@ -27,7 +27,7 @@ class NFA:
         banned = ["break", "const", "case", "catch", "continue", "default",
               "delete", "else", "false", "finally", "for", "function",
               "if", "let", "null", "return", "switch", "throw", "try",
-              "true", "var","while", " "]
+              "true", "var","while", " ", "do"]
         if string in banned:
             return False
         if string == "":
