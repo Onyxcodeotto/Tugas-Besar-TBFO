@@ -99,10 +99,11 @@ def classifying_operator(string):
     #log op can be and calc op can be excahnged
     logical_operator = ['==','>','>=','<','<=','&&', '||','??','===','!==','!=']
     calc_operator = ['+','&', '|','^', '/', '**','<<','*','%','>>','-','>>>']
-    assign_operator = ['+=', '=', '&=', '|=', '^=','/=', '**=','<<=','&&=', '||=','*=','??=','%=','>>=','-=','>>>=']
+    assign_operator = ['+=', '&=', '|=', '^=','/=', '**=','<<=','&&=', '||=','*=','??=','%=','>>=','-=','>>>=']
     prefix_operator = ['!', '~', '+', '-','--','++']
+    equal_operator = ["="]
     ambigue = ['+','-']
-    operator = logical_operator+ifop+elseop+calc_operator+assign_operator+prefix_operator
+    operator = logical_operator+ifop+elseop+calc_operator+assign_operator+prefix_operator+equal_operator
     result = []
     store = ''
     for i in string:
@@ -120,11 +121,13 @@ def classifying_operator(string):
                     elif store in prefix_operator:
                         result.append('opPrec')
                     elif store in assign_operator:
-                        result.append('opAss')
+                        result.append('opAssignment')
                     elif store in ifop:
                         result.append('opif')
                     elif store in elseop:
                         result.append('opels')
+                    elif store in equal_operator:
+                        result.append('equal')
                     
             if i in operator:
                 store=i
@@ -177,6 +180,8 @@ def PreProcess(array):
     temp2 = []
     for i in array:
         if varNFA(i):
+
+            
             temp1.append('variabel')
         else:
             temp1.append(i)

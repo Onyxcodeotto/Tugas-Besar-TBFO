@@ -15,7 +15,7 @@ array = PreProcess(array)
 #print(array)
 frame = CYK_ALT(cfg, array)
 benarkah = 'SMain' in frame[0][len(frame)-1]
-#print(cfg)
-print(array)
+beneran = 'S' in frame[0][len(frame)-1]
 
-printFrame(frame, array)
+print(benarkah)
+print(beneran)

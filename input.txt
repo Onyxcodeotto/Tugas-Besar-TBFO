@@ -1,7 +1,19 @@
 //var test = {ba : "Kucing" , Jumlah:1}
 //while(isOne){ 5 = 4 + 3;};
-//var a = 2 + 3;
-//b = (3+1)-1;
-
-
+/*
+var a = 2 + 3;
+b = (3+1)-1;
+x = 10;
+*/
+//To be solved
+//console.log(myVar); 
+halo;
 let king = {wife:"ELSA", daughter: "Son"};
+let NAMRUD = {Death:true};
+
+switch (expression) {
+    case bang_toyyib:
+        x = 5;
+        y=2;
+        break;
+}
