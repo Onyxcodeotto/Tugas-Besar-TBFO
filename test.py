@@ -1,15 +1,23 @@
-from CYK_ALGORITHM import CYK, CYK_ALT
+from CYK_ALGORITHM import CYK, CYK_ALT, printFrame
 from cfg_parser import cfg_parser, getAllKey
-from cfgToCNF import removeunit
-
+from cfgToCNF import cfgToCnf
+from jsparser import read, lexxer, removecomment
+from dfa import PreProcess
 
 cfg = cfg_parser("./test_parse_cfg.txt")
-cfg = removeunit(cfg)
+cfg = cfgToCnf(cfg)
+
+string = read("input.txt")
+string = removecomment(string)
+array = lexxer(string)
+
+array = PreProcess(array)
+print(array)
+frame = CYK_ALT(cfg, array)
+benarkah = 'S0' in frame[0][len(frame)-1]
 print(cfg)
-# lets try cut space method
-frame = CYK_ALT(cfg, "baaab")
-benarkah = 'S' in frame[0][4]
+print(array)
 
-
+printFrame(frame, array)
 print(frame)
-print(benarkah)
+print(benarkah) 

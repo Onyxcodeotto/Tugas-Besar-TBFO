@@ -13,10 +13,7 @@ text =  read("input.txt")
             
 
 def lexxer(string):
-    banned = ["break", "const", "case", "catch", "continue", "default",
-              "delete", "else", "false", "finally", "for", "function",
-              "if", "let", "null", "return", "switch", "throw", "try",
-              "true", "var","while", '(', ')', '[', ']', '{','}', '=', '!', '&','*','-','+', ';', ":", "|", "?", ",", "<", ">",
+    banned = [ '(', ')', '[', ']', '{','}', '=', '!', '&','*','-','+', ';', ":", "|", "?", ",", "<", ">",
               "/", ".", "'", '"']
     result = []
     temp = ''
@@ -87,12 +84,12 @@ def removecomment(lex):
         result += currentChar
     return result
 print(text)
-text = removecomment(text)        
-        
+text = removecomment(text)            
 print(text)
 text = re.sub(' +', ' ',text)
 text = lexxer(text)
     
 
 
+print(text)
 print(text)

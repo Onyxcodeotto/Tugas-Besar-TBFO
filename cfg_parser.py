@@ -9,7 +9,8 @@ def cfg_parser(path):
     cfg = {}
     with open(path, 'r') as f:
         for line in f.readlines():
-            
+            if line[0] == "#" or line[0] == '\n':
+                continue
             parts = line.split('->')
             parts[1] = parts[1].strip('\n')
             parts[0] = parts[0].strip()
@@ -25,6 +26,9 @@ def cfg_parser(path):
             else:
                 cfg[parts[0]] = cfg[parts[0]] + [parts[1].split()]
     f.close()
+    cfg['SPACEPS'] = [[' '], ['\n'], ['SPACEPS', 'SPACEPS']]
+    cfg['SPASIW'] = [[' '], ['\n'], ['SPASIW', 'SPASIW']]
+    cfg['SPASALL'] = [[' '], ['\n'],[';'], ['SPASALL','SPASALL']]
     return cfg
     
     
@@ -70,7 +74,7 @@ def containTerminal(array):
 def replaceVal(array, valfrom, valinto):
     for i in range(len(array)):
         if array[i] == valfrom:
-            array[i]= valinto
+            array[i] = valinto
     return array
 
 def isMixed(array):

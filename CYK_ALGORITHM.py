@@ -38,14 +38,23 @@ def CYK_ALT(CNF, input_string):
             else:
                 for k in range(inc):
                     k+=i
-                    rule = list(''.join(e) for e in itertools.product(frame[i][k], frame[k+1][j]))
+                    rule = list(itertools.product(frame[i][k], frame[k+1][j]))
                     for pair in rule:
-                        pair = [*pair]
-                        frame[i][j].update(getAllKey(CNF,pair))
+                        array = [pair[0], pair[1]]
+                        frame[i][j].update(getAllKey(CNF,array))
                         
     return frame
-                    
-            
-            
+
+def printFrame(frame, base):
+    for inc in range(0, len(base)):#increment
+        for i in range(0, len(base) - inc):#base
+            j = i+inc
+            if inc==0:
+                print(frame[i][j],end = "   ")
+            else:
+                print(frame[i][j],end="   ")      
+        print("\n")
+           
+        
             
             
