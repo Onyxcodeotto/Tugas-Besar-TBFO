@@ -4,42 +4,43 @@ from cfg_parser import notTerminal,getTerminal,containTerminal,getAllKey,getKey,
 
                             
 def removeunit(cfg):
+    done = False
     delete = []
-    for key, val in cfg.items():
-        for i in range(len(val)):
-            if (len(val[i]) == 1 and notTerminal(val[i])):
-                for j in cfg[val[i][0]]:
-                    if i not in val[i]:
-                        val.append(j)
-                    else:
-                        continue
-                delete.append([key, val[i]])
-    for i in delete:
-        cfg[i[0]].remove(i[1])
+    add = []
+    while not done:
+        add = []
+        delete = []
+        done = True
+        for key, val in cfg.items():
+            for i in range(len(val)):
+                if (len(val[i]) == 1 and notTerminal(val[i])):
+                    done = False
+                    for j in cfg[val[i][0]]:
+                        if j not in val:
+                            add.append([key, j])
+                        else:
+                            continue
+                    delete.append([key, val[i]])
+        
+        for i in add:
+            cfg[i[0]].append(i[1])
+        for i in delete:
+            cfg[i[0]].remove(i[1])
     return cfg
 def cfgToCnf(cfg):
     # Asumsi sekarang
     # 1. No useless symbol
     temp = 0
-    
-    
     #Step 1 create new start symbol
     cfg['SMain'] = [['S']]
     
     #Step 2 Simplify
-    #a. remove eps (nanti)
-    #for i in cfg:
-       # for j in cfg[i]:
-       #     if 'eps' in j:# find epsilon
-       #         print(i)
+    #a. remove eps (langsung diterapkan)
                 
-    #b. remove useless symbol (langsung diterapkan di docs)
-    #c. remove unit productions 
+    #b. remove useless symbol (langsung diterapkan)
+    #c. remove unit productions print('test')
+    
     cfg = removeunit(cfg)
-    
-    
-
-
     #step 3 seperate everything with len>2
     newRule = {} 
     for key, val in cfg.items():

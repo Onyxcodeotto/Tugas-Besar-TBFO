@@ -1,7 +1,3 @@
-#cfgParser
-
-
-#
 import re
 
 
@@ -11,6 +7,7 @@ def cfg_parser(path):
         for line in f.readlines():
             if line[0] == "#" or line[0] == '\n':
                 continue
+            
             parts = line.split('->')
             parts[1] = parts[1].strip('\n')
             parts[0] = parts[0].strip()
@@ -26,9 +23,6 @@ def cfg_parser(path):
             else:
                 cfg[parts[0]] = cfg[parts[0]] + [parts[1].split()]
     f.close()
-    cfg['SPACEPS'] = [[' '], ['\n'], ['SPACEPS', 'SPACEPS']]
-    cfg['SPASIW'] = [[' '], ['\n'], ['SPASIW', 'SPASIW']]
-    cfg['SPASALL'] = [[' '], ['\n'],[';'], ['SPASALL','SPASALL']]
     return cfg
     
     
@@ -88,13 +82,3 @@ def isMixed(array):
             nonTerminal = True
         i+=1
     return (terminal & nonTerminal)
-    
-    """
-
-cfg = cfg_parser('test_parse_cfg.txt')
-
-print(cfg)
-cnf = cfgToCnf(cfg)
-print(getAllKey(cfg,['A', 'S']))
-
-print(cnf)"""

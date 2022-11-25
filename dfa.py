@@ -59,7 +59,7 @@ def intNFA(string):
     state = 'q0'
     nfa = {'q0':RULE({'[0-9]':'q1'}),
             'q1':RULE({'[0-9]':'q1', '.':'q2', 'e':'q3'}),
-            'q2':RULE({'[0-9]':'q2', 'e':'q3'}),
+            'q2':RULE({'[0-9]':'q2', '[eE]':'q3'}),
             'q3':RULE({'[0-9]':'q5', '\+|\-':'q4'}),
             'q4':RULE({'[0-9]':'q5'}),
             'q5':RULE({'[0-9]':'q5'})
@@ -115,7 +115,6 @@ def classifying_operator(string):
                 if i in ambigue:
                     result.append('opAmb')
                 else:
-                    print(store)
                     if store in logical_operator+calc_operator:
                         result.append('opExp')
                     elif store in prefix_operator:
@@ -150,7 +149,7 @@ def transformstring(string):
             stop = i
             ignore = True
         if ignore:
-            result.append('setring')
+            result.append('benang')
         else:
             result.append(i)
             
@@ -178,7 +177,7 @@ def PreProcess(array):
     temp2 = []
     for i in array:
         if varNFA(i):
-            temp1.append('fariabel')
+            temp1.append('variabel')
         else:
             temp1.append(i)
     #2. Transform number

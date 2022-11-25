@@ -27,6 +27,8 @@ def lexxer(string):
             if temp != "" and (nextChar == " "or nextChar == "\n" or nextChar in banned or (temp in banned)) or currentChar =='\n':
                 result.append(temp)
                 temp = ''
+        if i==len(string)-1 and temp != " ":
+            result.append(temp)
     return result
 
 
@@ -83,13 +85,3 @@ def removecomment(lex):
             continue
         result += currentChar
     return result
-print(text)
-text = removecomment(text)            
-print(text)
-text = re.sub(' +', ' ',text)
-text = lexxer(text)
-    
-
-
-print(text)
-print(text)
